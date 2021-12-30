@@ -16,3 +16,9 @@ v-on:action="what to do"
 specify what to do whenever an action takes place
 <button v-on:click="items.push(newItem)" >Add</button> 
 <button @click="items.push(newItem)" >Add</button> 
+
+v-bind: === :
+v-bind:href="newItem"
+We can couple any HTML attribute to our data
+<a v-bind:href="newItem">Dinamic Link</a>
+<a :href="newItem">Dinamic Link</a>

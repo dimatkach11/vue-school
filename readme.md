@@ -111,3 +111,10 @@ We'll use this to manage when we should be toogling the add item form.
 We can initialize it to a string of "default"
 LOOK THE COODE FROM HERE...
 
+### How make dinamic somethig like an href ?
+Well, with the v-bind directive, we can couple any HTML attribute to our data.
+For example, let's add a link to our template, use the v-bind on the href, and then reference newItem.
+v-bind:href="newItem"
+Now we can build templates where any attributes responds to our data.
+v-bind: === :
+

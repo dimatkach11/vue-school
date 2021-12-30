@@ -37,9 +37,14 @@
 
       <button class="btn btn-primary" 
       @click="saveItem"
+      :disabled="newItem.length === 0"
       >Save Item</button>
 
     </div>
+
+    <a target="_blank"
+    :href="newItem"
+    >Dinamic Link</a>
 
     <ul>
 
@@ -52,7 +57,7 @@
     </ul>
 
     <p v-if="items.length === 0">You don't have any Items</p>
-    
+
   </div>
   <script src="https://unpkg.com/vue"></script>
   <script>
@@ -66,7 +71,7 @@
           '20 cups',
         ],
         newItem: '',
-        state: 'default',
+        state: 'edit',
       },
       methods: {
         saveItem: function() {
