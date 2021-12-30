@@ -118,3 +118,35 @@ v-bind:href="newItem"
 Now we can build templates where any attributes responds to our data.
 v-bind: === :
 
+We can use v-bind for every attribut, there are some special cases.
+When we are using attribute bindings, classes are a special case because we can pass additional data, so they can determine when to apply certain classes.
+
+Let's add a strikeout to our shopping list items, as we purchase them.
+To start we need to refactor our items from a simple Array to Array of Objects,
+so we can keep track of their purchased state.
+We need to update our saveItem method and how are template is rendering the items.
+
+Now we can add our dinamic classes. Vue has two ways for adding dinamic classes.
+Array and Object syntax.
+
+The Object syntax is the simpler, more concise way to add a dinamic class.
+:class="{strikeout: item.purchased}"
+
+Array sintax more verbose but offer us more flexibility for toogling between different classes:
+:class="[item.purchased ? strikeout : '']"
+
+It's possible to toogle multiple classes with both syntaxes.
+If we added a hightPriority property to our items, we could see that our class bindings can keep track of both conditionals.
+
+The Object syntax
+:class="{
+  strikeout: item.purchased,
+  priority: item.hightPriority,
+}"
+
+The Array syntax
+:class="[
+  item.purchased ? 'strikeout' : '',
+  item.hightPriority ? 'priority' : '',
+]"
+
