@@ -56,6 +56,29 @@ To make worked the vue extension for pages opened via file://protocol, we''l nee
 In browser go to extensions and click on Vue Devtools and make sure that "Allow access to file URLs" is checked.
 
 In Vue devtools in the first panel we can see all of our Vue instances.
-In the <Root> instances we can see the data that we've defined for our shopping list app. 
+In the <Root> instances we can see the data that we've defined for our shopping list app.
+
+Vue devtools injects our Vue instances into the console for us, so we can test and manipulate them,
+without relying on setting them to a variable.
+
+Now if we selecting the Vue instance and go to our console we can inspect it by typing $vm0
+For example we can see our items by typing $vm0.items.
+
+Now try to add a new item using Vue devtools and console by:
+$vm0.newItem = 'new item using dev tools and console'
+$vm0.items.push($vm0.newItem)
+
+### Implement logic of adding items in the app 
+Add button, and then we capture the click event. 
+With the Vue directive v-on we can specify what to do whenever an action takes place, such as a user click a button,
+submitting a form or hovering over an element ecc.
+In our we'll want to listen for a click event, that gets triggered when user press the button.
+To do that we can add v-on:click action and the code to do, like:
+v-on:click="items.push(newItem)
+Vue let's us respond to every event that JavaScript can.
+So, we could respond to tab, esc, delete keys, or right and cmd clicks, focus and mousover, and more.
+v-on has a short-hand syntax 
+v-on: === @
+
 
 

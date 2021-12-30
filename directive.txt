@@ -1,0 +1,18 @@
+v-model 
+v-model="a property from data object"
+To bind data into html tag in-sync both direction
+<input v-model="newItem">
+
+v-for
+v-for => equivalent of foreach => v-for="item in Array"
+To loop an html object like li or other
+<li v-for="item in items">
+  {{ item }}
+</li> 
+
+v-on: === @ 
+v-on:action="what to do"
+@action="what to do"
+specify what to do whenever an action takes place
+<button v-on:click="items.push(newItem)" >Add</button> 
+<button @click="items.push(newItem)" >Add</button> 
