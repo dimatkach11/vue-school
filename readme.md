@@ -98,3 +98,16 @@ Select the our instance from Vue devtools and than:
 $vm0.newItem = 'new item using dev tools and console'
 $vm0.saveItem()
 
+### v-if and v-else directives
+Let us conditionally render elements.
+We can use it in our app to show a message if we don't have any shopping list items.
+In our template we can add a paragraph tag with a v-if,
+that only shows when there are no items. 
+
+What if we want to show two different states?
+Let's how to do that by hiding our add item form when we're not using it.
+Let's start by adding a state property to our data.
+We'll use this to manage when we should be toogling the add item form.
+We can initialize it to a string of "default"
+LOOK THE COODE FROM HERE...
+

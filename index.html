@@ -9,24 +9,50 @@
 </head>
 <body>
   <div id="shopping-list">
-    <h1>
-      {{ header ? header.toLocaleUpperCase() : 'welcome!'  }}
-    </h1>
-    <div class="add-item-form">
+    <div class="header">
+      <h1>
+        {{ header ? header.toLocaleUpperCase() : 'welcome!'  }}
+      </h1>
+
+      <button class="btn btn-primary"
+      v-if="state === 'default'"
+      @click="changeState('edit')"
+      >Open Add Item form</button>
+
+      <button class="btn btn-cancel"
+      v-if="state === 'edit'"
+      @click="changeState('default')"
+      >Close Add Item form</button>
+
+    </div>
+
+    <div class="add-item-form"
+    v-if="state === 'edit'"
+    >
+
       <input type="text" placeholder="Add an Item" 
       v-model="newItem"  
       @keyup.enter="saveItem"
       >
+
       <button class="btn btn-primary" 
-      @click="saveItem">Add</button>
+      @click="saveItem"
+      >Save Item</button>
+
     </div>
+
     <ul>
+
       <li 
       v-for="item in items"
       >
         {{ item }}
       </li>
+
     </ul>
+
+    <p v-if="items.length === 0">You don't have any Items</p>
+    
   </div>
   <script src="https://unpkg.com/vue"></script>
   <script>
@@ -40,10 +66,15 @@
           '20 cups',
         ],
         newItem: '',
+        state: 'default',
       },
       methods: {
         saveItem: function() {
           this.items.push(this.newItem)
+          this.newItem = ''
+        },
+        changeState: function(state) {
+          this.state = state
           this.newItem = ''
         }
       },
