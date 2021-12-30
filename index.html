@@ -12,7 +12,7 @@
     <h1>
       {{ header ? header.toLocaleUpperCase() : 'welcome!'  }}
     </h1>
-    <input type="text" v-model="header">
+    <input type="text" v-model="newItem" placeholder="Add an Item">
     <ul>
       <li v-for="item in items">
         {{ item }}
@@ -29,7 +29,8 @@
           '10 party hats',
           '2 board games',
           '20 cups',
-        ]
+        ],
+        newItem: '',
       },
     })
   </script>

@@ -46,7 +46,16 @@ shoppingList.$data.items.push('A data from console')
 We also can remove a data from our items Array, as well.
 shoppingList.$data.items.pop()
 
+### Adding items from application 
+We'll start by adding a newItem property to our data.
+In our input we use v-model to bind newItem to our input.
+Just like that we've established a two-way data binding between our input and the newItem data, so they always stay in-sync.
 
+### Vue.js devtools chrome extension
+To make worked the vue extension for pages opened via file://protocol, we''l need to modify devtools settings.
+In browser go to extensions and click on Vue Devtools and make sure that "Allow access to file URLs" is checked.
 
+In Vue devtools in the first panel we can see all of our Vue instances.
+In the <Root> instances we can see the data that we've defined for our shopping list app. 
 
 
