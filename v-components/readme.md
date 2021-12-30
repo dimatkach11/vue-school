@@ -26,3 +26,10 @@ data() {
 }
 
 Now we can use our component name, as a custom HTML element.
+
+## x-template way to define a template
+Is the best for getting started.
+We can add a script element in the html, and set its type to text/x-template.
+We also need to give it an id, so we can refernce it. 
+In Vue.js, the components template must be a single root element.
+https://vuejs.org/v2/guide/syntax
