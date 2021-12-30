@@ -178,3 +178,4 @@ v-for="item in reversedItems"
 When you need to change data you will use a method.
 When you need to change a presentation of existing data, you we'll use computed properties. 
 
+
