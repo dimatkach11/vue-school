@@ -10,7 +10,7 @@
 <body>
   <div id="shopping-list">
     <h1>
-      {{ header }}
+      {{ header ? header.toLocaleUpperCase() : 'welcome!'  }}
     </h1>
     <input type="text" v-model="header">
   </div>
@@ -19,7 +19,7 @@
     const shoppingList = new Vue({
       el: '#shopping-list',
       data: {
-        header: 'Vue is ready to party!'
+        header: 'Sopping List App'
       },
     })
   </script>

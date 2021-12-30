@@ -16,3 +16,18 @@ v-model="header"
 Text in the input is in-sync with the header data. So if we change the input's value, we see our h1's content change instantly.
 Let's assign our Vue instance to a variable (shoppingList) and then use it in our browser console. 
 shoppingList.$data.header = 'Hi from the console!'
+
+We've already used Vue's templating syntax to bind data to the DOM, but it turns out that it's much more powerful than that.  
+Inside of those double mustaches "{{}}", we can use the full power of JavaScript expressions.
+So, if we wanted to uppercase our header, we'd just have to add the .toLocaleUpperCase() method.
+There are some limitation to use in our double mustaches "{{}}".
+The biggest is that we can only evalute one expression at a time,
+we also can't declare variables or evaluate if statement in them,
+but if needed we can use a short-hand if statement, otherwhise known as a ternary statement.
+header ? header : 'welcome!'
+
+
+
+
+
+
