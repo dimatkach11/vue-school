@@ -150,3 +150,31 @@ The Array syntax
   item.hightPriority ? 'priority' : '',
 ]"
 
+### Computed Properties
+Computed properties are another powerful feature from Vue that allows us 
+to transform or perform calculations on our data and then easily reuse the result
+as an up-to-date variable in our template. Computed properties are very useful 
+and should replace complex in-template expressions.
+
+We can create a computed property that would calculate the length of the text in an input. 
+For example if we wanted to enforce a character limit to our newItem field 
+and wanted to show our users how many characters they had left,
+
+We could use a computed property to calculate that for us, based on our current data implementation. 
+It's import to return a value from computed property.
+We'll need to carefull no to change our actual data in data object.  
+Remember that computed properties are only for transforming data for our presentation layer.
+They should not alter or change the existing data.
+To avoid that, we can use slice(0) to make a copy of the array.
+Accindentally changing or mutating an underlying data value in a computed property, 
+is a big source of headachess and bugs.  
+
+In Vue devtools we can see that there's a new section for computed properties now.
+
+Now we can use our reversedItems instead of Items in our template in v-for place.
+v-for="item in items"
+v-for="item in reversedItems"
+
+When you need to change data you will use a method.
+When you need to change a presentation of existing data, you we'll use computed properties. 
+

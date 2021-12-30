@@ -35,6 +35,8 @@
       @keyup.enter="saveItem"
       >
 
+      <p> {{ characterCount }}/200 </p>
+
       <button class="btn btn-primary" 
       @click="saveItem"
       :disabled="newItem.length === 0"
@@ -49,7 +51,7 @@
     <ul>
 
       <li 
-      v-for="item in items"
+      v-for="item in reversedItems"
       :class="{strikeout: item.purchased}"
       @click="tooglePurchased(item)"
       >
@@ -86,6 +88,14 @@
         ],
         newItem: '',
         state: 'edit',
+      },
+      computed: {
+        characterCount() {
+          return this.newItem.length
+        },
+        reversedItems() {
+          return this.items.slice(0).reverse()
+        }
       },
       methods: {
         saveItem: function() {
