@@ -26,6 +26,25 @@ we also can't declare variables or evaluate if statement in them,
 but if needed we can use a short-hand if statement, otherwhise known as a ternary statement.
 header ? header : 'welcome!'
 
+### Adding Items to our shopp list app
+To do that, we'll add an Array of items as property to our data.
+items : [
+  '10 party hats',
+  '2 board games',
+  '20 cups',
+]
+Vue makes it super easy to loop over and render Arrays and Objects in our template,
+with a directive called v-for. We can add it to our HTML just like we did with v-model earler.
+We'll create a ul and then use v-for to add a bunch of li's.
+<li v-for="item in items">
+  {{ item }}
+</li>
+We'd like an li "for each" item, in our items Array.
+v-for is reactive as well.
+In console we can push some data to our items Array.
+shoppingList.$data.items.push('A data from console')
+We also can remove a data from our items Array, as well.
+shoppingList.$data.items.pop()
 
 
 

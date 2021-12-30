@@ -13,13 +13,23 @@
       {{ header ? header.toLocaleUpperCase() : 'welcome!'  }}
     </h1>
     <input type="text" v-model="header">
+    <ul>
+      <li v-for="item in items">
+        {{ item }}
+      </li>
+    </ul>
   </div>
   <script src="https://unpkg.com/vue"></script>
   <script>
     const shoppingList = new Vue({
       el: '#shopping-list',
       data: {
-        header: 'Sopping List App'
+        header: 'Sopping List App',
+        items : [
+          '10 party hats',
+          '2 board games',
+          '20 cups',
+        ]
       },
     })
   </script>
