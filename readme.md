@@ -80,5 +80,21 @@ So, we could respond to tab, esc, delete keys, or right and cmd clicks, focus an
 v-on has a short-hand syntax 
 v-on: === @
 
+### Extract in line persistance JavaScript into Vue methods
+Inside a Vue instansce we can define a methods Object 
+where we can add methods that encapsulate specific functionality for our Vue instance.
+We can add a property called saveItem and set it equal to a function.
+Inside the function we add a JavaScript logic.
+We're moving template logic into this method.
+One thing to note is that inside of our methods we do not have automatic access to our Vue instance data like we did it in the v-on.
+Instead, we we'll need to explicitly reference it using the this keyword,
+much like we used $vm0 in the console earlier.  
 
+we can also debug our method in the vue console by so:
+shoppingList.newItem = 'new item from console'
+shoppingList.saveItem()
+OR:
+Select the our instance from Vue devtools and than:
+$vm0.newItem = 'new item using dev tools and console'
+$vm0.saveItem()
 
