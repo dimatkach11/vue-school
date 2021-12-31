@@ -4,6 +4,19 @@ const PlanComponent = {
     name: {
       type: String,
       required: true
+    },
+    selectedPlan: {
+      type: String
+    }
+  },
+  computed: {
+    isSelected() {
+      return this.name === this.selectedPlan
+    }
+  },
+  methods: {
+    select() {
+      this.$emit('select', this.name)
     }
   }
 }
@@ -11,11 +24,17 @@ const PlanComponent = {
 const PlanPickerComponent = {
   template: '#plan-picker-template',
   components: {
-    Plan: PlanComponent
+    plan: PlanComponent
   },
   data() {
     return {
-      plans: ['The Single', 'The Curios', 'The Addict']
+      plans: ['The Single', 'The Curios', 'The Addict'],
+      selectedPlan: null
+    }
+  },
+  methods: {
+    selectPlan(plan) {
+      this.selectedPlan = plan
     }
   }
 }
@@ -24,6 +43,6 @@ const PlanPickerComponent = {
 new Vue({
   el: '#app',
   components: {
-    PlanPicker: PlanPickerComponent
+    planPicker: PlanPickerComponent
   },
 })

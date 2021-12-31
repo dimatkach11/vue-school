@@ -123,3 +123,111 @@ components: {planPicker: PlanPickerComponent},
 ```
 You can register globally something like a BaseButton or an Input, and register locally all the rest.
 
+## Communication Between Components with Custom Events
+We know how to pass data to a child component through props.
+In this lesson, we'll learn how to communicate from a child to a parent component through custom events.
+https://vuejs.org/v2/guide/components-custom-events
+We will use a custom event to notify the plan-picker of which plan has been selected,
+and make sure we have the right logic in place so the user can only select one plan at a time.
+
+When we have nested components we need a way to comunicate, and send data between them.
+We know that we can pass data to child components using props, but we don't know yet, 
+how to pass data from child to parent. 
+Example: 
+In Our plan picker we wanto to be able to pick a plan. How can we do this?
+
+We can add data property to the plan component to define if the plan is selected.
+We can also have a method to update the selected data.
+Let's call this method when user clicks on plan, and bind a class when the element is selected.
+
+Now we need to somehow make the select method, the previous selected plan, if there is one.
+But, how can we know inside the component, if there is another plan selected?
+We need to let the parent compnent know when the user selects a plan.
+To do that in Vue.js, we use custom events.
+To send a custom event, we use the special $emit method in our plan component.
+```js
+methods: {
+  select() {
+    this.$emit('name of event')
+  }
+}
+```
+The first argument is the name of the event we want to emit.
+We can inspect all the emitted events using Vue devtools. 
+Every time we click to a plan we can see the emitted event by plan.
+The second argument of the event is the data we want to pass along with the event.
+It is optional, but, in our case we will pass the name of the plan, 
+so the parent knows which plan got selected.
+Event data is often called payload.
+
+Now, we can listen for the select event in the parent, which is the plan-picker component, using v-on.
+As we do for the DOM events, like the click and the keydown.
+```html
+ <plan v-for="plan in plans" :name="plan" @select="selectPlan"></plan>
+```
+
+So we will say @select equals and then pass it an expression to run, when the event takes place.
+That's it, when the select event take place trigger the selectPlan method.
+
+Now, the plan picker needs to know which plan the user has selected.
+To store that, we will add a data property, selectedPlan.
+Let's also add the selectPlan method that will recive the plan, coming from the event payload, 
+and will set it to the selectedPlan.
+
+now go to plan and, now that the parent knows which plan is selected,
+we don't need to store it twice, in parent and child component.
+So we remove the selected data and will add the prop, so the parent pass down the selectedPlan. 
+With that in place, we need to know when the active plan is selected, 
+so we dinamically add this class. One way to do that, is to check if the selectedPlan and the current plan are the same.
+We can do that in the template, but you can also use a computed property, 
+since components are capable of doing whatever a Vue instance can do.
+We called it isSelected() and here, we will return the check we need.
+Now we need to pass the selectedPlan to our component.
+:selectedPlan="selectedPlan"
+Html property is case insensitive, so we can write ::selectedPlan === :selected-plan.
+
+### Review:
+When the plan is clicked => planComponent select() method $emit a custom event called 'select',
+and we pass the plan name as the payload.
+```js
+select() {
+  this.$emit('select', this.name)
+}
+```
+Then, in the parent, we listen for the select event, and when it happens
+we call the selectPlan() method of planPickerComponent methods.
+```html
+<plan v-for="plan in plans" :name="plan" @select="selectPlan" :selected-plan="selectedPlan"></plan>
+```
+```js
+methods: {
+  selectPlan(plan) {
+    this.selectedPlan = plan
+  }
+}
+```
+This method gets the plan name from the payload, and it sets it to the data selectedPlan.
+This data, selectedPlan, is the one we pass to the planComponent like a prop, 
+so it knows if it is selected or not, by a computed method that return this boolean result.
+```js
+computed: {
+  isSelected() {
+    return this.name === this.selectedPlan
+  }
+}
+```
+Lastly in the template, we use a class binding, to conditionally apply the active-class, 
+based on if the plan is selected.
+```html
+:class="{'active-plan': isSelected  }"
+```
+
+A calculated property caches its value based on its dependencies, that is, 
+when the value of the main property changes in his father (selectedPlan) 
+it causes all its child components to recalculate the value of its computed property 
+due to its validation (return this.name === this. ** selectedPlan **). 
+Every time the main node changes its property (selectedPlan) 
+the children will have to execute that operation again to obtain the value 
+of their calculated property, that way in the html with the class binding 
+it detects the value of that property to apply a css class or not.
+
