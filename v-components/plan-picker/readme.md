@@ -74,3 +74,52 @@ Components allow us to encapsulate functionality and easily reuse them in multip
 It is common to have components inside other components to compose the bigger features of our apps.
 
 Look at plan-picker component.
+
+## Global vs Local Components
+There are two ways to register a component, global and local.
+Global registration often is not ideal.
+For example if you are using a build system like Webpack, globally registering all components,
+meabs that even if you stop using a component, it can still be included in your final build.
+This unnecessarily increases the amount of JavaScript, your users have to download.
+Additionally, for some some components, it doesn't make sense to have them registered globally.
+For instance, we will not use the plan component, outside of plan picker.
+
+In cases like this, we can define the component as a javascript object,
+and register it when we need to use it.
+```js
+const PlanComponent = {
+  template: '#plan-template',
+  ...
+}
+```
+Now inside the parent component plan-picker, we will use the components option, 
+to register the Plan locally.
+The components is an object where the keys are the name of the components, 
+and the value is the options object.
+```js
+Vue.component('plan-picker', {
+  template: '#plan-picker-template',
+  components: {
+    plan: PlanComponent
+  },
+  ...
+}
+```
+Now that our component is registered locally inside plan-picker, we cannot use it anymore outside of plan pickers template.
+
+We can also register the plan picker component locally, since most likelly,
+we don't need to use it in every page of our website.
+!important note
+```js
+components: {'plan-picker': PlanPickerComponent},
+```
+is equivalent to type like
+```js
+components: {PlanPicker: PlanPickerComponent},
+```
+or 
+```js
+components: {planPicker: PlanPickerComponent},
+```
+You can register globally something like a BaseButton or an Input, and register locally all the rest.
+
