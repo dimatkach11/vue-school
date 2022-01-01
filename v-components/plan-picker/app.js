@@ -1,5 +1,5 @@
-const PlanComponent = {
-  template: '#plan-template',
+const PlanPickerItemComponent = {
+  template: '#plan-picker-item-template',
   props: {
     name: {
       type: String,
@@ -24,7 +24,7 @@ const PlanComponent = {
 const PlanPickerComponent = {
   template: '#plan-picker-template',
   components: {
-    plan: PlanComponent
+    'plan-picker-item': PlanPickerItemComponent
   },
   data() {
     return {
@@ -43,6 +43,6 @@ const PlanPickerComponent = {
 new Vue({
   el: '#app',
   components: {
-    planPicker: PlanPickerComponent
+    'plan-picker': PlanPickerComponent
   },
 })

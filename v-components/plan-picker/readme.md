@@ -231,3 +231,15 @@ the children will have to execute that operation again to obtain the value
 of their calculated property, that way in the html with the class binding 
 it detects the value of that property to apply a css class or not.
 
+## Component Naming Best Practices
+https://vuejs.org/v2/style-guide/
+
+Component names should always be multy-word, exept for root app components.
+This prevent conflicts with existing and future HTML elements.
+
+In our case plan become plan-item. Beacuse we register the component locally inside plan-picker, 
+the property name is also the name of the component. 
+
+Order of the names in the components name.
+Name should start with the most general words, and end with descriptive modifying words.
+
