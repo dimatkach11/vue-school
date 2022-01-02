@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lifecicle Hooks</title>
 </head>
-<body>
+<body style="background-color: #a4e7f0;">
   <div id="app">
     <h2 style="text-align:center" >Fetched Example Post</h2>
     <div style="display: flex;flex-wrap: wrap;margin: 0 auto;justify-content: center;">
@@ -20,8 +20,8 @@
 
   <!-- blog-post-template -->
   <script type="text/x-template" id="blog-post-template">
-    <div >
-      <div style="padding: 1rem;margin: 1rem;border:1px solid;max-width: 400px;" >
+    <div>
+      <div style="padding: 1rem;margin: 1rem;max-width: 400px;background-color: #fff;" >
         <img :src="blogPostImgUrl" :alt="blogPostImgTitle">
         <h3>{{ blogPostTitle }}</h3>
         <p>{{ blogPostBody }}</p>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub user profile component</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+  <div id="app">
+
+    <div class="ui cards">
+      <github-user-card username="dimatkach11"></github-user-card>
+      <github-user-card username="hootlex"></github-user-card>
+    </div>
+
+  </div>
+
+  <!-- github-user-card-template -->
+  <script type="text/x-template" id="github-user-card-template">
+    <div class="ui card">
+      <div class="image">
+        <img :src="avatar_url">
+      </div>
+      <div class="content">
+        <a class="header" :href="html_url" target="_blank">{{ githubName }}</a>
+        <div class="meta">
+          <span class="date">Joined in {{ created_at }}</span>
+        </div>
+        <div class="description">
+          {{ bio }}
+        </div>
+      </div>
+      <div class="extra content">
+        <a :href="public_repos_url" target="_blank">
+          <i class="user icon"></i>
+          {{ public_repos }} Repositories
+        </a>
+      </div>
+    </div>
+  </script>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="app.js"></script>
+</body>
+</html>

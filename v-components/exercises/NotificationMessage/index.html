@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notification Message Component</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+  <div id="app">
+
+    <div class="ui container">
+      <h1>Notification Center</h1>
+
+      <notification-message type="error" header="Oh no!">
+        <p>Your flight has been <b>cancelled</b>!</p>
+      </notification-message>
+
+      <notification-message type="success" header="Oh yeah!">
+        <p>Your flight is on time!</p>
+      </notification-message>
+
+      <notification-message>
+        Good Morning!
+      </notification-message>
+
+    </div>
+
+  </div>
+
+  <!-- notification-message-template -->
+  <script type="text/x-template" id="notification-message-template">
+    <div class="ui message" :class="type" v-if="!hidden">
+      <i class="close icon" @click="hide"></i>
+      <div class="header">
+        {{ header }}
+      </div>
+      <slot></slot>
+    </div>
+  </script>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="app.js"></script>
+</body>
+</html>

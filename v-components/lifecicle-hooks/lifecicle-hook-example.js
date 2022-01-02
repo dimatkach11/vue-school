@@ -3,18 +3,18 @@ const BlogPostComponent = {
   props: ['id'],
   data() {
     return {
+      testingHookString: 'generic string',
       blogPostTitle: null,
       blogPostBody: null,
       blogPostImgTitle: null,
       blogPostImgUrl: null,
     }
   },
-  created() {
-    // axios.get('api/posts/' + this.id)
-    // .then(response => {
-    //   this.blogPost = response.data
-    // })
-
+  beforeCreate() {
+    console.log('beforeCreate:', this.testingHookString);
+  },
+  created() {// Greate time for fetch data.
+    console.log('created:', this.testingHookString);
     // Fake REST - API 
     // https://jsonplaceholder.typicode.com/
     fetch('https://jsonplaceholder.typicode.com/posts/' + this.id)
@@ -29,6 +29,12 @@ const BlogPostComponent = {
       this.blogPostImgTitle = json.title
       this.blogPostImgUrl = json.thumbnailUrl
     })
+  },
+  beforeMount() {
+    console.log('beforeMount:', this.testingHookString);
+  },
+  mounted() {
+    console.log('mounted:', this.testingHookString, this.$el);
   }
 }
 
@@ -38,6 +44,7 @@ new Vue({
     'blog-post': BlogPostComponent
   }, 
   data: {
-    id: [1,2,3]
+    // id: [1,2,3]
+    id: [1]
   }
 })
